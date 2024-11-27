@@ -1,27 +1,132 @@
-#container {
-  text-align: center;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
+.next {
   font-size: 20px;
-  line-height: 26px;
+  height: 50px;
+  // width: 50px;
+  --corner-radius: 50%;
+
+  color: rgb(255, 255, 255);
+  --background: #fe2522;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.logo {
+  width: 300px;
+  height: 200px;
 }
 
-#container a {
-  text-decoration: none;
+.title_header{
+  font-weight: bold;
+  font-size: 16px
+}
+
+.img_header_content{
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 20px;
+}
+
+.img_header{
+  height: 110px;
+
+}
+
+
+.nextGameRound {
+  position: absolute;
+  right: 100px;
+  top:30px;
+  font-size: 15px;
+  // zoom: 1.1;
+  height: 50px;
+  width: 50px;
+  --border-radius: 50%;
+  color: rgb(255, 255, 255);
+  --background: #a50000;
+
+}
+
+.nextGameRectangle {
+  font-size: 13px;
+  zoom: 1.1;
+  height: 60px;
+  // width: 100px;
+
+  color: rgb(255, 255, 255);
+  --background: #2f2f2f;
+
+}
+
+
+ion-button{
+  --padding-start: 0 !important;
+  --padding-end: 0 !important;
+  --padding-top: 0 !important;
+  --padding-bottom: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  --background-activated: transparent !important;
+
+}
+
+.button_number {
+  font-size: 50px;
+  height: 100px;
+  width: 100px;
+  --border-radius: 50%;
+
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+
+}
+
+.selected {
+  font-size: 45px;
+  height: 70px;
+  width: 70px;
+  --border-radius: 50%;
+
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  --background: #fe2522;
+}
+
+
+
+.notSelected {
+  font-size: 45px;
+  height: 70px;
+  width: 70px;
+  --border-radius: 50%;
+
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  --background: #2f2f2f;
+}
+
+.notSelectedGrid {
+  font-size: 15px;
+  height: 50px;
+  width: 110px;
+  border-radius: 50%;
+  color: rgb(255, 255, 255);
+  --background: #2f2f2f;
+}
+
+.dateSubtitle{
+  font-weight: bold;
+  font-size: 30px;
+  color: white
+}
+
+.dataTitle {
+  font-weight: bold;
+  font-size: 18px;
+  color: white
+}
+
+.space{
+  height: 5px;
 }

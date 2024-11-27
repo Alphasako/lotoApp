@@ -1,20 +1,599 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
+
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+
+    <img style="height: 100px; text-align: center; align-items: center;"src="../assets/logo.png">
+
+
   </ion-toolbar>
-</ion-header>
+
+</ion-header> -->
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="img_header_content">
+
+    <img class="img_header" src="../assets/logo.png">
+
   </div>
+
+
+  <ion-button class="nextGameRound" (click)="resetGame()">
+    <ion-icon name="refresh-outline"></ion-icon>
+  </ion-button>
+
+
+
+  <!-- <ion-grid>
+    <ion-row>
+
+      <ion-col class="ion-align-self-center" size="3">
+
+        <div style="text-align: center">
+
+
+        <img style="height: 90px; text-align: center; align-items: center;"src="../assets/logo.png">
+      </div>
+
+
+      </ion-col>
+
+      <ion-col size="2">
+
+        <ion-item>
+          <ion-label style="text-align: center;">
+            <p class="title_header">PARTIE</p>
+            <H1 style="font-weight: bold;font-size: 30px;">{{allGame[indexGame].number}}/24</H1>
+          </ion-label>
+        </ion-item>
+
+
+
+      </ion-col>
+
+      <ion-col size="2">
+
+        <ion-item>
+          <ion-label style="text-align: center;">
+            <p class="title_header">JEU EN COURS</p>
+            <H1 style="font-weight: bold;font-size: 30px;">{{allGame[indexGame].currentGame}}</H1>
+          </ion-label>
+        </ion-item>
+
+
+
+      </ion-col>
+
+      <ion-col size="2">
+
+        <ion-item>
+          <ion-label style="text-align: center;">
+            <p class="title_header">DERNIER NUMERO</p>
+            <H1 style="font-weight: bold;font-size: 30px;">{{lastNumber}}</H1>
+          </ion-label>
+        </ion-item>
+
+
+
+      </ion-col>
+
+
+
+      <ion-col class="ion-align-self-center" size="1" style="text-align: center;">
+
+
+        <div>
+          <ion-button class="nextGameRound" (click)="manuelEntry()">
+            <ion-icon name="help-outline"></ion-icon>
+          </ion-button>
+
+          <ion-button class="nextGameRound" (click)="deselectNumbers()">
+            <ion-icon name="refresh-outline"></ion-icon>
+          </ion-button>
+
+
+
+
+
+
+        </div>
+
+
+
+      </ion-col>
+
+      <ion-col class="ion-align-self-center" size="2" style="text-align: center;">
+
+
+
+
+          <ion-button class="nextGameRectangle" (click)="nextButton()">
+            Suivant
+
+            <ion-icon slot="end"name="caret-forward-outline"></ion-icon>
+          </ion-button>
+
+
+
+
+
+
+      </ion-col>
+
+
+
+
+    </ion-row>
+
+
+    <ion-row>
+
+      <ion-col class="ion-align-self-center" size="3">
+
+        <div style="text-align: right">
+
+
+          <img style="height: 30px; text-align: center; align-items: right;"src="../assets/star.png">
+        </div>
+
+
+      </ion-col>
+
+      <ion-col size="6">
+
+        <ion-item>
+          <ion-label style="text-align: center;">
+            <H1 style="font-weight: bold;font-size: 25px; text-transform: uppercase;">{{allGame[indexGame].currentGift}}</H1>
+            <H1 style="font-weight: bold;font-size: 20px;">{{allGame[indexGame].currentSponsor}}</H1>
+          </ion-label>
+        </ion-item>
+
+      </ion-col>
+
+
+
+
+
+
+
+      <ion-col class="ion-align-self-center" size="3" style="text-align: center;">
+
+        <div style="text-align: left">
+
+
+          <img style="height: 30px; text-align: center; align-items: right;"src="../assets/star.png">
+        </div>
+
+      </ion-col>
+
+
+
+
+    </ion-row>
+
+  </ion-grid> -->
+
+
+
+  <ion-grid>
+
+
+    <ion-row>
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[1].isClicked===true, 'notSelected': allNumbers[1].isClicked===false}" class="selected" (click)="onClick(1)">1</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[2].isClicked===true, 'notSelected': allNumbers[2].isClicked===false}" class="selected" (click)="onClick(2)">2</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[3].isClicked===true, 'notSelected': allNumbers[3].isClicked===false}" class="selected" (click)="onClick(3)">3</ion-button>
+      </ion-col>
+
+       <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[4].isClicked===true, 'notSelected': allNumbers[4].isClicked===false}" class="selected" (click)="onClick(4)">4</ion-button>
+      </ion-col>
+
+     <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[5].isClicked===true, 'notSelected': allNumbers[5].isClicked===false}" class="selected" (click)="onClick(5)">5</ion-button>
+      </ion-col>
+
+       <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[6].isClicked===true, 'notSelected': allNumbers[6].isClicked===false}" class="selected" (click)="onClick(6)">6</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[7].isClicked===true, 'notSelected': allNumbers[7].isClicked===false}" class="selected" (click)="onClick(7)">7</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[8].isClicked===true, 'notSelected': allNumbers[8].isClicked===false}" class="selected" (click)="onClick(8)">8</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[9].isClicked===true, 'notSelected': allNumbers[9].isClicked===false}" class="selected" (click)="onClick(9)">9</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[10].isClicked===true, 'notSelected': allNumbers[10].isClicked===false}" class="selected" (click)="onClick(10)">10</ion-button>
+      </ion-col>
+
+
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[11].isClicked===true, 'notSelected': allNumbers[11].isClicked===false}" class="selected" (click)="onClick(11)">11</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[12].isClicked===true, 'notSelected': allNumbers[12].isClicked===false}" class="selected" (click)="onClick(12)">12</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[13].isClicked===true, 'notSelected': allNumbers[13].isClicked===false}" class="selected" (click)="onClick(13)">13</ion-button>
+      </ion-col>
+
+       <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[14].isClicked===true, 'notSelected': allNumbers[14].isClicked===false}" class="selected" (click)="onClick(14)">14</ion-button>
+      </ion-col>
+
+     <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[15].isClicked===true, 'notSelected': allNumbers[15].isClicked===false}" class="selected" (click)="onClick(15)">15</ion-button>
+      </ion-col>
+
+       <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[16].isClicked===true, 'notSelected': allNumbers[16].isClicked===false}" class="selected" (click)="onClick(16)">16</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[17].isClicked===true, 'notSelected': allNumbers[17].isClicked===false}" class="selected" (click)="onClick(17)">17</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[18].isClicked===true, 'notSelected': allNumbers[18].isClicked===false}" class="selected" (click)="onClick(18)">18</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[19].isClicked===true, 'notSelected': allNumbers[19].isClicked===false}" class="selected" (click)="onClick(19)">19</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[20].isClicked===true, 'notSelected': allNumbers[20].isClicked===false}" class="selected" (click)="onClick(20)">20</ion-button>
+      </ion-col>
+
+
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[21].isClicked===true, 'notSelected': allNumbers[21].isClicked===false}" class="selected" (click)="onClick(21)">21</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[22].isClicked===true, 'notSelected': allNumbers[22].isClicked===false}" class="selected" (click)="onClick(22)">22</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[23].isClicked===true, 'notSelected': allNumbers[23].isClicked===false}" class="selected" (click)="onClick(23)">23</ion-button>
+      </ion-col>
+
+       <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[24].isClicked===true, 'notSelected': allNumbers[24].isClicked===false}" class="selected" (click)="onClick(24)">24</ion-button>
+      </ion-col>
+
+     <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[25].isClicked===true, 'notSelected': allNumbers[25].isClicked===false}" class="selected" (click)="onClick(25)">25</ion-button>
+      </ion-col>
+
+       <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[26].isClicked===true, 'notSelected': allNumbers[26].isClicked===false}" class="selected" (click)="onClick(26)">26</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[27].isClicked===true, 'notSelected': allNumbers[27].isClicked===false}" class="selected" (click)="onClick(27)">27</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[28].isClicked===true, 'notSelected': allNumbers[28].isClicked===false}" class="selected" (click)="onClick(28)">28</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[29].isClicked===true, 'notSelected': allNumbers[29].isClicked===false}" class="selected" (click)="onClick(29)">29</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[30].isClicked===true, 'notSelected': allNumbers[30].isClicked===false}" class="selected" (click)="onClick(30)">30</ion-button>
+      </ion-col>
+
+
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[31].isClicked===true, 'notSelected': allNumbers[31].isClicked===false}" class="selected" (click)="onClick(31)">31</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[32].isClicked===true, 'notSelected': allNumbers[32].isClicked===false}" class="selected" (click)="onClick(32)">32</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[33].isClicked===true, 'notSelected': allNumbers[33].isClicked===false}" class="selected" (click)="onClick(33)">33</ion-button>
+      </ion-col>
+
+       <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[34].isClicked===true, 'notSelected': allNumbers[34].isClicked===false}" class="selected" (click)="onClick(34)">34</ion-button>
+      </ion-col>
+
+     <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[35].isClicked===true, 'notSelected': allNumbers[35].isClicked===false}" class="selected" (click)="onClick(35)">35</ion-button>
+      </ion-col>
+
+       <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[36].isClicked===true, 'notSelected': allNumbers[36].isClicked===false}" class="selected" (click)="onClick(36)">36</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[37].isClicked===true, 'notSelected': allNumbers[37].isClicked===false}" class="selected" (click)="onClick(37)">37</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[38].isClicked===true, 'notSelected': allNumbers[38].isClicked===false}" class="selected" (click)="onClick(38)">38</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[39].isClicked===true, 'notSelected': allNumbers[39].isClicked===false}" class="selected" (click)="onClick(39)">39</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[40].isClicked===true, 'notSelected': allNumbers[40].isClicked===false}" class="selected" (click)="onClick(40)">40</ion-button>
+      </ion-col>
+
+
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[41].isClicked===true, 'notSelected': allNumbers[41].isClicked===false}" class="selected" (click)="onClick(41)">41</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[42].isClicked===true, 'notSelected': allNumbers[42].isClicked===false}" class="selected" (click)="onClick(42)">42</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[43].isClicked===true, 'notSelected': allNumbers[43].isClicked===false}" class="selected" (click)="onClick(43)">43</ion-button>
+      </ion-col>
+
+       <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[44].isClicked===true, 'notSelected': allNumbers[44].isClicked===false}" class="selected" (click)="onClick(44)">44</ion-button>
+      </ion-col>
+
+     <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[45].isClicked===true, 'notSelected': allNumbers[45].isClicked===false}" class="selected" (click)="onClick(45)">45</ion-button>
+      </ion-col>
+
+       <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[46].isClicked===true, 'notSelected': allNumbers[46].isClicked===false}" class="selected" (click)="onClick(46)">46</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[47].isClicked===true, 'notSelected': allNumbers[47].isClicked===false}" class="selected" (click)="onClick(47)">47</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[48].isClicked===true, 'notSelected': allNumbers[48].isClicked===false}" class="selected" (click)="onClick(48)">48</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[49].isClicked===true, 'notSelected': allNumbers[49].isClicked===false}" class="selected" (click)="onClick(49)">49</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[50].isClicked===true, 'notSelected': allNumbers[50].isClicked===false}" class="selected" (click)="onClick(50)">50</ion-button>
+      </ion-col>
+
+
+    </ion-row>
+
+
+
+    <ion-row>
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[51].isClicked===true, 'notSelected': allNumbers[51].isClicked===false}" class="selected" (click)="onClick(51)">51</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[52].isClicked===true, 'notSelected': allNumbers[52].isClicked===false}" class="selected" (click)="onClick(52)">52</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[53].isClicked===true, 'notSelected': allNumbers[53].isClicked===false}" class="selected" (click)="onClick(53)">53</ion-button>
+      </ion-col>
+
+       <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[54].isClicked===true, 'notSelected': allNumbers[54].isClicked===false}" class="selected" (click)="onClick(54)">54</ion-button>
+      </ion-col>
+
+     <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[55].isClicked===true, 'notSelected': allNumbers[55].isClicked===false}" class="selected" (click)="onClick(55)">55</ion-button>
+      </ion-col>
+
+       <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[56].isClicked===true, 'notSelected': allNumbers[56].isClicked===false}" class="selected" (click)="onClick(56)">56</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[57].isClicked===true, 'notSelected': allNumbers[57].isClicked===false}" class="selected" (click)="onClick(57)">57</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[58].isClicked===true, 'notSelected': allNumbers[58].isClicked===false}" class="selected" (click)="onClick(58)">58</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[59].isClicked===true, 'notSelected': allNumbers[59].isClicked===false}" class="selected" (click)="onClick(59)">59</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[60].isClicked===true, 'notSelected': allNumbers[60].isClicked===false}" class="selected" (click)="onClick(60)">60</ion-button>
+      </ion-col>
+
+
+    </ion-row>
+
+
+
+    <ion-row>
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[61].isClicked===true, 'notSelected': allNumbers[61].isClicked===false}" class="selected" (click)="onClick(61)">61</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[62].isClicked===true, 'notSelected': allNumbers[62].isClicked===false}" class="selected" (click)="onClick(62)">62</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[63].isClicked===true, 'notSelected': allNumbers[63].isClicked===false}" class="selected" (click)="onClick(63)">63</ion-button>
+      </ion-col>
+
+       <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[64].isClicked===true, 'notSelected': allNumbers[64].isClicked===false}" class="selected" (click)="onClick(64)">64</ion-button>
+      </ion-col>
+
+     <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[65].isClicked===true, 'notSelected': allNumbers[65].isClicked===false}" class="selected" (click)="onClick(65)">65</ion-button>
+      </ion-col>
+
+       <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[66].isClicked===true, 'notSelected': allNumbers[66].isClicked===false}" class="selected" (click)="onClick(66)">66</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[67].isClicked===true, 'notSelected': allNumbers[67].isClicked===false}" class="selected" (click)="onClick(67)">67</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[68].isClicked===true, 'notSelected': allNumbers[68].isClicked===false}" class="selected" (click)="onClick(68)">68</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[69].isClicked===true, 'notSelected': allNumbers[69].isClicked===false}" class="selected" (click)="onClick(69)">69</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[70].isClicked===true, 'notSelected': allNumbers[70].isClicked===false}" class="selected" (click)="onClick(70)">70</ion-button>
+      </ion-col>
+
+
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[71].isClicked===true, 'notSelected': allNumbers[71].isClicked===false}" class="selected" (click)="onClick(71)">71</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[72].isClicked===true, 'notSelected': allNumbers[72].isClicked===false}" class="selected" (click)="onClick(72)">72</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[73].isClicked===true, 'notSelected': allNumbers[73].isClicked===false}" class="selected" (click)="onClick(73)">73</ion-button>
+      </ion-col>
+
+       <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[74].isClicked===true, 'notSelected': allNumbers[74].isClicked===false}" class="selected" (click)="onClick(74)">74</ion-button>
+      </ion-col>
+
+     <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[75].isClicked===true, 'notSelected': allNumbers[75].isClicked===false}" class="selected" (click)="onClick(75)">75</ion-button>
+      </ion-col>
+
+       <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[76].isClicked===true, 'notSelected': allNumbers[76].isClicked===false}" class="selected" (click)="onClick(76)">76</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[77].isClicked===true, 'notSelected': allNumbers[77].isClicked===false}" class="selected" (click)="onClick(77)">77</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[78].isClicked===true, 'notSelected': allNumbers[78].isClicked===false}" class="selected" (click)="onClick(78)">78</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[79].isClicked===true, 'notSelected': allNumbers[79].isClicked===false}" class="selected" (click)="onClick(79)">79</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[80].isClicked===true, 'notSelected': allNumbers[80].isClicked===false}" class="selected" (click)="onClick(80)">80</ion-button>
+      </ion-col>
+
+
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[81].isClicked===true, 'notSelected': allNumbers[81].isClicked===false}" class="selected" (click)="onClick(81)">81</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[82].isClicked===true, 'notSelected': allNumbers[82].isClicked===false}" class="selected" (click)="onClick(82)">82</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[83].isClicked===true, 'notSelected': allNumbers[83].isClicked===false}" class="selected" (click)="onClick(83)">83</ion-button>
+      </ion-col>
+
+       <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[84].isClicked===true, 'notSelected': allNumbers[84].isClicked===false}" class="selected" (click)="onClick(84)">84</ion-button>
+      </ion-col>
+
+     <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[85].isClicked===true, 'notSelected': allNumbers[85].isClicked===false}" class="selected" (click)="onClick(85)">85</ion-button>
+      </ion-col>
+
+       <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[86].isClicked===true, 'notSelected': allNumbers[86].isClicked===false}" class="selected" (click)="onClick(86)">86</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[87].isClicked===true, 'notSelected': allNumbers[87].isClicked===false}" class="selected" (click)="onClick(87)">87</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[88].isClicked===true, 'notSelected': allNumbers[88].isClicked===false}" class="selected" (click)="onClick(88)">88</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[89].isClicked===true, 'notSelected': allNumbers[89].isClicked===false}" class="selected" (click)="onClick(89)">89</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button [ngClass]="{'selected': allNumbers[90].isClicked===true, 'notSelected': allNumbers[90].isClicked===false}" class="selected" (click)="onClick(90)">90</ion-button>
+      </ion-col>
+
+
+    </ion-row>
+
+
+  </ion-grid>
+
+
+  <!-- <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="manuelEntry()">
+      <ion-icon name="chevron-up-circle"></ion-icon>
+    </ion-fab-button>
+
+  </ion-fab> -->
+
+
 </ion-content>
+
+<!-- <ion-footer>
+  <ion-button (click)="nextGame()">Partie suivante</ion-button>
+</ion-footer> -->
